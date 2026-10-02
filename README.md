@@ -1,13 +1,13 @@
-# Multi-Year Hotel Revenue Optimization & Risk Management Analytics
+# Olist Brazilian E-Commerce Performance Analysis
 
-## 🎯 Executive Project Overview
-This project establishes an advanced data pipeline and strategic business intelligence workflow tailored for **Hospitality Revenue Management**. 
+## 🎯 Project Overview
+This project provides an end-to-end data engineering and analytics solution for evaluating product category velocity within a large-scale Brazilian e-commerce dataset containing over **100k records**. 
 
-Utilizing over **141k historical booking transactions (2018–2020)**, this analysis identifies baseline financial growth, maps pricing elasticity, and flags critical bottom-line leakages caused by channel-specific cancellation patterns.
+The goal of this analysis is to transform raw operational data into strategic catalog optimization recommendations for executive stakeholders.
 
 ---
 
-## 🛠️ Technical Architecture
+## 🛠️ Tech Stack Used
 
 * **Database Management Engine:** SQLite
 * **Pipeline Infrastructure:** Python (`sqlite3`, `pandas`)
@@ -15,34 +15,24 @@ Utilizing over **141k historical booking transactions (2018–2020)**, this anal
 
 ---
 
-## 🔑 Core Revenue & Risk Insights
+## 🔑 Key Business Insights
 
-### 1. Pricing Elasticity & Revenue Stabilization (2018–2020)
-* **The Trend:** Total bookings and revenue peaked in 2019 at **50,312 bookings** yielding **\$16.2M USD**.
-* **The Revenue Discovery:** In fiscal year 2020, customer volume collapsed by over 50%. However, an aggressive pricing strategy drove the **Average Daily Rate (ADR)** up by 18% to **\$111.31**. This dynamic optimization mitigated disaster, securing **\$9.81M USD** in revenue despite market disruptions.
-
-### 2. High-Risk Booking Channels & Revenue Leakage
-* **Online Travel Agencies (OTA):** Flagged as the absolute highest financial vulnerability, responsible for over **\$11.04M USD in lost revenue** with a volatile **35.90% cancellation rate**.
-* **Group Bookings:** Present extreme operational risk, showcasing a devastating **61.82% cancellation velocity** resulting in **\$3.66M USD in lost pipeline values**.
-* **Direct Channels:** Direct reservations proved to be the healthiest acquisition channel, generating stable volume with the lowest structural cancellation floor (**15.51%**).
+1. **Volume vs. Value Disconnect:** While `bed_bath_table` represents the highest volume of unique stock keeping units (SKUs) in the entire marketplace, it drops to **3rd place** in actual value generation.
+2. **High-Velocity Revenue Drivers:** The `health_beauty` and `watches_gifts` sectors are the primary revenue engines of the platform—each generating **over \$1.2M USD** in total transactional revenue despite carrying lower retail stock depth.
+3. **Strategic Catalog Action:** The executive team should transition capital allocation away from aggressively sourcing low-margin bedding inventory and prioritize expanding premium watch and health/beauty vendor partnerships to optimize revenue-per-SKU ratios.
 
 ---
 
-## 📊 Performance Visualizations
-Below is the generated business performance graphic mapping the interplay between volumetric fiscal growth (Revenue bars) and algorithmic yield strategy (ADR line):
+## 📊 Core Visualization
+Below is the structured analysis layout showing the top 10 revenue-generating product classes across the entire marketplace platform:
 
-![Hotel Performance Matrix](hotel_revenue_performance.png)
-
-### 📈 Core Visualizations
-* ![Hotel Performance Matrix](hotel_revenue_performance.png)
-* ![Channel Cancellation Risk](channel_cancellation_risk.png)
-* ![Monthly Occupancy Trends](monthly_occupancy_trends.png)
+![Top Revenue Categories](top_revenue_categories.png)
 
 ---
 
-## 🗂️ Project Execution Files
+## 🏗️ Project Architecture & Pipeline
+How the project is structured linearly to ensure reproducibility:
 
-* **`build_pipeline.py`:** Automated ETL architecture that scans the project directory, extracts complex multi-sheet Excel bundles, and constructs optimized relational tables in SQLite.
-* **`revenue_analysis.py`:** Compiles structural aggregations tracking annual volumetric demand and yield pacing.
-* **`revenue_chart.py`:** Generates twin-axis data visuals mapping financial variables for corporate presentations.
-* **`cancellation_analysis.py`:** Diagnostic risk script calculating channel leakage metrics and cancellation frequencies.
+1. **`import.py`:** Automatically parses, cleans, and converts 9 isolated relational CSV logs into structured SQL database tables (`olist_ecommerce.db`).
+2. **`query.py`:** Executes advanced relational `JOIN` algorithms across product logs, sales ledger entries, and translation tables to perform clean currency aggregations.
+3. **`chart.py`:** Extracts processed records into Pandas data frames to engineer and format high-definition diagnostic visualizations.
